@@ -1,0 +1,39 @@
+
+---
+title: "ANOVA [DNSC]"
+author: "Gonzalo J. Muñoz, PhD"
+date: "22 de enero de 2019"
+output:  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+El análisis de varianza (ANOVA) se refiere a una familia de técnicas estadísticas para evaluar el "efecto" de uno o más factores sobre una variable dependiente. No necesariamente  
+
+## Una ilustración
+
+El dueño de un restaurant quiere saber si sus clientes estarían más contentos con el servicio si tuviera música en vivo. Astutamente, diseña un experimeno donde algunos días tiene un grupo de música en vivo, otros días tiene música envasada (¡con la música del mismo grupo!) y otros días no pone música de ningún tipo (¡mi condición preferida, por cierto!). Los resultados del experimento se muestran a continuación
+
+```{r musica, echo=F}
+condicion<-c(rep("Música en vivo",5),rep("Música envasada",5),rep("Sin música",5))
+condicion<-factor(condicion)
+satisfaccion <-c(3,3,3,3,3,7,7,7,7,7,5,5,5,5,5)
+#produce números aleatorios normalmente error1<-rnorm(5,mean=0, sd=2) #para simplificar cada grupo tiene un error con M = 0.
+error<-c(rnorm(5,mean=0, sd=2),rnorm(5,mean=0, sd=2),rnorm(5,mean=0, sd=2))
+#sidenotes http://www.cookbook-r.com/Numbers/Generating_random_numbers/]
+
+
+data<-data.frame(condicion,satisfaccion+error)
+names(data)<-c("condicion", "satisfaccion")
+print(data, digits=2)
+# Especificar la data es opcional en este caso. 
+model<-lm(satisfaccion~condicion,data)
+
+
+anova(model)
+plot(data)
+```
