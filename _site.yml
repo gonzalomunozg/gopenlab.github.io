@@ -1,1 +1,9 @@
-
+name: "gopenlab-website"
+output_dir: "."
+navbar:
+  title: "G Open Lab"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About Me"
+      href: about.html
