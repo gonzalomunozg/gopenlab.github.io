@@ -1,2 +1,2 @@
 # gopenlab.github.io
-Gonzalo's gopenlab website!
+Gonzalo's Open Lab website!
